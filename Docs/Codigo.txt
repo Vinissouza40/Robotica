@@ -1,0 +1,148 @@
+#include<Servo.h> 
+
+Servo servo1; //dedao
+Servo servo2; //mindinho
+Servo servo3; //anelar
+Servo servo4; //meio
+Servo servo5; //indicador
+Servo servo6; //pulso esquerda
+Servo servo7; //pulso direita
+
+const int led1 = 9;
+
+const int trig_sensor = 12; //sensor/trig
+const int echo_sensor = 13; //sensor/echo
+
+int dedo;
+
+
+void setup() {
+  
+  servo1.attach(2); //dedao
+  servo2.attach(3); //mindinho
+  servo3.attach(4); //anelar
+  servo4.attach(5); //meio
+  servo5.attach(6); //indicador
+  
+  servo1.write(0);
+  servo2.write(0);
+  servo3.write(0);
+  servo4.write(0);
+  servo5.write(0);
+  
+  
+  pinMode(led1, OUTPUT);
+ 
+  
+  pinMode(trig_sensor, OUTPUT);
+  digitalWrite(trig_sensor, LOW);
+  pinMode(echo_sensor, INPUT);
+  
+  Serial.begin(9600);
+}
+
+void loop() {
+  
+digitalWrite(led1, HIGH);
+  for (dedo = 30; dedo <= 120; dedo++)
+  {
+    servo1.write(dedo);
+    delay(5);
+  }
+  
+  digitalWrite(led1, LOW);
+  for (dedo = 120; dedo >= 30; dedo--)
+  {
+    servo1.write(dedo);
+    delay(5);
+  }
+ 
+  //Dedo 2 - 0 - 100
+    digitalWrite(led1, HIGH);
+  for (dedo = 0; dedo <= 100; dedo++)
+  {
+    servo2.write(dedo);
+    delay(5);
+  }
+  
+  digitalWrite(led1, LOW);
+  for (dedo = 100; dedo >= 0; dedo--)
+  {
+    servo2.write(dedo);
+    delay(5);
+  }
+
+//Dedo 3 - 0 - 100
+    digitalWrite(led1, HIGH);
+  for (dedo = 0; dedo <= 100; dedo++)
+  {
+    servo3.write(dedo);
+    delay(5);
+  }
+  
+  digitalWrite(led1, LOW);
+  for (dedo = 100; dedo >= 0; dedo--)
+  {
+    servo3.write(dedo);
+    delay(5);
+  }
+
+//Dedo 4
+    digitalWrite(led1, HIGH);
+  for (dedo = 0; dedo <= 150; dedo++)
+  {
+    servo4.write(dedo);
+    delay(5);
+  }
+  
+  digitalWrite(led1, LOW);
+  for (dedo = 150; dedo >= 0; dedo--)
+  {
+    servo4.write(dedo);
+    delay(5);
+  }
+
+//Dedo 5
+    digitalWrite(led1, HIGH);
+  for (dedo = 180; dedo >= 90; dedo--)
+  {
+    servo5.write(dedo);
+    delay(5);
+  }
+  
+  digitalWrite(led1, LOW);
+  for (dedo = 90; dedo <= 180; dedo++)
+  {
+    servo5.write(dedo);
+    delay(5);
+  }
+
+//Dedo 5
+    digitalWrite(led1, HIGH);
+
+    servo1.write(30);
+    servo2.write(0);
+    servo3.write(0);
+    servo4.write(0);
+    servo5.write(170);
+    delay(100);
+
+  
+  digitalWrite(led1, LOW);
+
+    servo1.write(120);
+    servo2.write(100);
+    servo3.write(100);
+    servo4.write(150);
+    servo5.write(90);
+  delay(2000);
+
+   digitalWrite(led1, HIGH);
+
+    servo1.write(30);
+    servo2.write(0);
+    servo3.write(0);
+    servo4.write(0);
+    servo5.write(170);
+    delay(2000);
+}
